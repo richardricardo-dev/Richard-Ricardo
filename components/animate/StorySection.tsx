@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./story.module.css";
 import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "react-icons/si";
 
+import { TbBrandFramerMotion } from "react-icons/tb";
+
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -50,11 +52,11 @@ export default function Story() {
         // 👉 SKILLS
         .to(".about", { opacity: 0, y: -100, duration: 1 })
         .to(".about-img", { opacity: 0, duration: 1 }, "<")
-        .fromTo(".skills", { opacity: 0 }, { opacity: 1, duration: 1 })
+        .fromTo(".skills", { opacity: 0 }, { opacity: 1, duration: 1, pointerEvents: "all" })
 
         // 👉 CTA
         .to(".skills", { opacity: 0, duration: 1 })
-        .fromTo(".cta", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1 })
+        .fromTo(".cta", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1, pointerEvents: "all" })
 
         // 👉 CONTACT
         .to(".cta", { opacity: 0, duration: 1 })
@@ -72,7 +74,7 @@ export default function Story() {
           Hello There! <br /> I’m Richard
         </h1>
         <p className="mt-6 text-lg opacity-60">I build modern, fast and responsive web experiences.</p>
-        <Button>Hello</Button>{" "}
+        <Button>Explore My Work →</Button>
       </div>
 
       <div className="hero-img relative flex items-center justify-center">
@@ -80,7 +82,7 @@ export default function Story() {
       </div>
 
       {/* ABOUT */}
-      <div className="about absolute inset-0 flex items-center justify-between px-40 opacity-0">
+      <div className="about absolute inset-0 flex items-center justify-between px-40 opacity-0 pointer-events-none">
         <img src="/sayatapiai.png" className={styles.imageAbout} />
         <div className={styles.about_container}>
           <h2 className={styles.aboutTitle}>I’m a Developer who passionate building fast, modern and responsive web experiences.</h2>
@@ -105,7 +107,8 @@ export default function Story() {
       </div>
 
       {/* SKILLS */}
-      <div className="skills absolute inset-0 z-20 opacity-0">
+      <div className="skills absolute inset-0 z-20 opacity-0 pointer-events-none">
+        {" "}
         <div className={styles.skillsContainer}>
           <p className={styles.skillsLabel}>MY STACK</p>
 
@@ -156,7 +159,7 @@ export default function Story() {
       </div>
 
       {/* CTA */}
-      <div className="cta absolute inset-0 flex items-center justify-center opacity-0 text-center">
+      <div className="cta absolute inset-0 flex items-center justify-center opacity-0 text-center pointer-events-none">
         <div>
           <h2 className="text-4xl font-bold">Let’s build something great</h2>
           <button className="mt-4 px-6 py-2 bg-white text-black rounded-full">View Work</button>
@@ -164,7 +167,7 @@ export default function Story() {
       </div>
 
       {/* CONTACT */}
-      <div className="contact absolute inset-0 flex items-center justify-center opacity-0 text-center">
+      <div className="contact absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 text-center">
         <div>
           <h2 className="text-4xl font-bold">Contact Me</h2>
           <p className="mt-2 opacity-60">your@email.com</p>

@@ -1,9 +1,17 @@
 .buttonMain {
-  background-color: red;
-  padding: 12px;
-  border-radius: 12px;
+  background-color: transparent;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 10px;
+  border: 1px solid rgb(142, 142, 142);
 }
 
 .buttonMain:hover {
-  background-color: white;
+  background-color: white !important;
+  color: black;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); /* Efek bercahaya */
+}
+
+.buttonMain:active {
+  transform: translateY(-1px); /* Efek ditekan */
 }
