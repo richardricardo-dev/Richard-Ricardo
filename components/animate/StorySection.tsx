@@ -7,8 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./story.module.css";
 import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "react-icons/si";
 
-import { TbBrandFramerMotion } from "react-icons/tb";
-
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -69,7 +67,7 @@ export default function Story() {
   return (
     <section ref={ref} className="min-h-screen w-full  text-white relative overflow-hidden flex items-center justify-between px-45">
       {/* HERO */}
-      <div className="hero-text max-w-xl z-10 pointer-events-none">
+      <div className="hero-text max-w-xl z-10">
         <h1 className={styles.heroTitle}>
           Hello There! <br /> I’m Richard
         </h1>
