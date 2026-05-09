@@ -1,0 +1,9 @@
+.buttonMain {
+  background-color: red;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.buttonMain:hover {
+  background-color: white;
+}

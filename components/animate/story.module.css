@@ -1,0 +1,203 @@
+.heroImg {
+  width: 350px;
+  border-radius: 70%;
+  box-shadow: 0 0 40px rgb(0, 0, 0);
+}
+
+.heroTitle {
+  font-size: 73px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.imageAbout {
+  width: 520px;
+  border-radius: 20px;
+}
+
+.about_container {
+  margin-left: 120px;
+}
+
+.aboutTitle {
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.2;
+  font-size: 45px;
+}
+
+.aboutContent {
+  margin-top: 20px;
+  font-size: 20px;
+  color: rgb(192, 192, 192);
+}
+.aboutStats {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.statItem h3 {
+  font-size: 42px;
+  font-weight: 700;
+
+  color: white;
+}
+
+.statItem p {
+  margin-top: 10px;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.skillsContainer {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 0 40px;
+}
+
+.skillsLabel {
+  font-size: 14px;
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  margin-bottom: 24px;
+}
+
+.skillsTitle {
+  font-size: 72px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  max-width: 900px;
+
+  color: white;
+}
+
+.skillsTech {
+  margin-top: 50px;
+
+  display: flex;
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.techItem {
+  position: relative;
+
+  width: 220px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: 0.5s;
+  /* color: red; */
+}
+
+.techItem:hover {
+  transform: translateY(-5px);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border-color: rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.08);
+}
+
+/* SMALL ICON */
+
+.smallIcon {
+  position: absolute;
+
+  top: 14px;
+  left: 18px;
+
+  font-size: 20px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  transition: 0.5s;
+
+  z-index: 2;
+}
+
+/* TEXT */
+
+.techText {
+  margin-left: 14px;
+
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  transition: 0.5s;
+
+  z-index: 2;
+}
+
+/* BIG ICON */
+
+.bigIcon {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, 120px);
+
+  font-size: 54px;
+
+  opacity: 0;
+
+  color: white;
+
+  transition: 0.5s;
+}
+
+/* HOVER */
+
+.techItem:hover .smallIcon {
+  transform: translateY(100px);
+
+  opacity: 0;
+}
+
+.techItem:hover .techText {
+  transform: translateY(100px);
+
+  opacity: 0;
+}
+
+.techItem:hover .bigIcon {
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+}
