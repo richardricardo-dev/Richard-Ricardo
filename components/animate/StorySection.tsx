@@ -105,8 +105,7 @@ export default function Story() {
       </div>
 
       {/* SKILLS */}
-      <div className="skills absolute inset-0 z-20">
-        {" "}
+      <div className="skills absolute inset-0 z-20 opacity-0">
         <div className={styles.skillsContainer}>
           <p className={styles.skillsLabel}>MY STACK</p>
 
