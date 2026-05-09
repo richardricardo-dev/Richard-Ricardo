@@ -1,5 +1,5 @@
 import Index from "./home/page";
-export default function Home() {
+export default function Page() {
   return (
     <div>
       <Index></Index>
