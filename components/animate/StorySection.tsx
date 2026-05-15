@@ -1,22 +1,41 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./story.module.css";
 import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "react-icons/si";
-
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import Link from "next/link";
 
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
+  const [hideScroll, setHideScroll] = useState(false);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const triggerRef = useRef<ScrollTrigger | null>(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+
+      const pageHeight = document.documentElement.scrollHeight;
+
+      // 150px sebelum mentok bawah
+      setHideScroll(scrollPosition >= pageHeight - 150);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!ref.current) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -28,6 +47,8 @@ export default function Story() {
           pin: true,
         },
       });
+
+      triggerRef.current = tl.scrollTrigger!;
 
       // 👉 HERO → fade out
       tl.to(".hero-text", {
@@ -133,24 +154,75 @@ export default function Story() {
         .fromTo(".contact", { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1 });
     }, ref);
 
+    // const goContact = () => {
+    //   if (!ref.current) return;
+
+    //   gsap.to(window, {
+    //     duration: 2,
+    //     ease: "power2.inOut",
+
+    //     scrollTo: {
+    //       y: ref.current.offsetTop + 2800,
+    //     },
+    //   });
+    // };
+
     return () => ctx.revert();
   }, []);
+
+  const goContact = () => {
+    if (!triggerRef.current) return;
+
+    gsap.to(window, {
+      duration: 2,
+      ease: "power2.inOut",
+
+      scrollTo: {
+        y: triggerRef.current.end,
+      },
+    });
+  };
 
   return (
     <section ref={ref} className="min-h-screen w-full  text-white relative overflow-hidden flex items-center justify-between px-45">
       {/* HERO */}
       <div className="hero-text max-w-xl z-10">
+        <div className={styles.heroBadge}>
+          <span></span>
+          Available for projects
+        </div>
+
         <h1 className={styles.heroTitle}>
-          Hello There! <br /> I’m Richard
+          Hello There!
+          <br />
+          I’m Richard
         </h1>
-        <p className="mt-6 text-lg opacity-60">I build modern, fast and responsive web experiences.</p>
-        <Link href={"/projects"}>
-          <Button>Explore My Work →</Button>
-        </Link>
+
+        <p className={styles.heroDescTop}>I build modern, fast and responsive digital experiences.</p>
+
+        <div className={styles.heroButtons}>
+          <Link href="/projects">
+            <Button>Explore Work →</Button>
+          </Link>
+
+          <Button className={styles.ghostBtn} onClick={goContact}>
+            Contact
+          </Button>
+        </div>
       </div>
 
-      <div className="hero-img relative flex items-center justify-center">
+      <div className="hero-img relative">
+        <div className={styles.photoGlow}></div>
+
         <img src="/saya2.png" className={styles.heroImg} />
+
+        <div className={styles.floatingTag}>Full Stack Developer</div>
+      </div>
+
+      <div
+        className={`${styles.scrollHint}
+  ${hideScroll ? styles.hideScroll : ""}`}>
+        Scroll ↓
       </div>
 
       {/* ABOUT */}
@@ -291,7 +363,7 @@ export default function Story() {
         </div>
       </div>
       {/* CONTACT */}
-      <div className="contact absolute inset-0 opacity-0 flex items-center justify-center">
+      <div className="contact absolute inset-0 opacity-0 flex items-center justify-center" id="contact">
         <div className={styles.contactContainer}>
           <div className={styles.contactTop}>
             <span className={styles.dot}></span>
