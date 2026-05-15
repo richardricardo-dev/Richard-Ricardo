@@ -8,6 +8,7 @@ import styles from "./story.module.css";
 import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "react-icons/si";
 
 import { TbBrandFramerMotion } from "react-icons/tb";
+import Link from "next/link";
 
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -54,10 +55,79 @@ export default function Story() {
         .to(".about-img", { opacity: 0, duration: 1 }, "<")
         .fromTo(".skills", { opacity: 0 }, { opacity: 1, duration: 1, pointerEvents: "all" })
 
-        // 👉 CTA
-        .to(".skills", { opacity: 0, duration: 1 })
-        .fromTo(".cta", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1, pointerEvents: "all" })
+        // CTA
+        .to(".skills", {
+          opacity: 0,
+          duration: 0.5,
+        })
 
+        .fromTo(
+          ".cta",
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            duration: 0.7,
+            pointerEvents: "all",
+          },
+        )
+
+        .from(
+          ".cta-badge",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.4,
+          },
+          "<",
+        )
+
+        .from(
+          ".cta-title",
+          {
+            opacity: 0,
+            y: 35,
+            duration: 0.5,
+          },
+          "-=.2",
+        )
+
+        .from(
+          ".cta-desc",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.4,
+          },
+          "-=.3",
+        )
+
+        .fromTo(
+          ".cta-button",
+          {
+            opacity: 0,
+            y: 30,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+          },
+          "-=.25",
+        )
+
+        .from(
+          ".preview-card",
+          {
+            opacity: 0,
+            scale: 0.95,
+            y: 30,
+            stagger: 0.08,
+            duration: 0.6,
+          },
+          "-=.4",
+        )
         // 👉 CONTACT
         .to(".cta", { opacity: 0, duration: 1 })
         .fromTo(".contact", { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1 });
@@ -74,7 +144,9 @@ export default function Story() {
           Hello There! <br /> I’m Richard
         </h1>
         <p className="mt-6 text-lg opacity-60">I build modern, fast and responsive web experiences.</p>
-        <Button>Explore My Work →</Button>
+        <Link href={"/projects"}>
+          <Button>Explore My Work →</Button>
+        </Link>
       </div>
 
       <div className="hero-img relative flex items-center justify-center">
@@ -158,19 +230,98 @@ export default function Story() {
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="cta absolute inset-0 flex items-center justify-center opacity-0 text-center pointer-events-none">
-        <div>
-          <h2 className="text-4xl font-bold">Let’s build something great</h2>
-          <button className="mt-4 px-6 py-2 bg-white text-black rounded-full">View Work</button>
+      {/* CTA Section */}
+      <div className="cta absolute inset-0 flex items-center opacity-0 justify-center z-30 pointer-events-none">
+        <div className={styles.heroGlow}></div>
+
+        {/* floating preview cards */}
+        <div className={styles.floatScene}>
+          <div className={`${styles.previewCard} preview-card ${styles.leftTop}`}>
+            <img src="/vaultz.png" alt="" />
+            <div className={styles.previewContent}>
+              <h4>HoliBill</h4>
+              <p>E-Commerce Topup</p>
+            </div>
+          </div>
+
+          <div className={`${styles.previewCard} preview-card ${styles.rightTop}`}>
+            <img src="/kitchenmom.png" alt="" />
+            <div className={styles.previewContent}>
+              <h4>DB Explorer</h4>
+              <p>Postgres Tool</p>
+            </div>
+          </div>
+
+          <div className={`${styles.previewCard} preview-card ${styles.leftBottom}`}>
+            <img src="/holibill.png" alt="" />
+            <div className={styles.previewContent}>
+              <h4>Task Master</h4>
+              <p>Management App</p>
+            </div>
+          </div>
+
+          <div className={`${styles.previewCard} preview-card ${styles.rightBottom}`}>
+            <img src="/vaultz.png" alt="" />
+            <div className={styles.previewContent}>
+              <h4>Motion Portfolio</h4>
+              <p>Interactive Design</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative z-10 text-center">
+          <div className={`${styles.badge} cta-badge`}>
+            {" "}
+            <span></span>
+            Available for projects
+          </div>
+
+          <h2 className={`${styles.heroCtaTitle} cta-title`}>
+            {" "}
+            Let’s build
+            <br />
+            something great.
+          </h2>
+
+          <p className={`${styles.heroDesc} cta-desc`}>I design and build digital experiences that are fast, intuitive, and impactful.</p>
+
+          <div className={styles.ctaButtons}>
+            <button className={`${styles.primaryBtn} cta-button`}>View Work →</button>
+          </div>
         </div>
       </div>
-
       {/* CONTACT */}
-      <div className="contact absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 text-center">
-        <div>
-          <h2 className="text-4xl font-bold">Contact Me</h2>
-          <p className="mt-2 opacity-60">your@email.com</p>
+      <div className="contact absolute inset-0 opacity-0 flex items-center justify-center">
+        <div className={styles.contactContainer}>
+          <div className={styles.contactTop}>
+            <span className={styles.dot}></span>
+            <p className={styles.contactLabel}>GET IN TOUCH</p>
+          </div>
+
+          <h2 className={styles.contactTitle}>
+            Lets work <span>together.</span>
+          </h2>
+
+          <p className={styles.contactDesc}>Have an idea, project, or opportunity? I`d love to hear from you.</p>
+
+          <a href="mailto:your@email.com" className={styles.contactMail}>
+            ✉ richardricardoyohanes@gmail.com
+          </a>
+
+          <div className={styles.contactButtons}>
+            <button className={styles.contactBtn}>Say Hello →</button>
+
+            <button className={styles.contactGhost}>Resume ↓</button>
+          </div>
+
+          <div className={styles.line}></div>
+
+          <div className={styles.contactSocial}>
+            <span>GitHub</span>
+            <span>LinkedIn</span>
+            <span>Instagram</span>
+            <span>Email</span>
+          </div>
         </div>
       </div>
     </section>

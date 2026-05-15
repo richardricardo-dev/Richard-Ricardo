@@ -1,0 +1,149 @@
+.main {
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+  padding-top: 120px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  height: 72px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* LOGO */
+
+.logo {
+  width: 138px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.45s;
+}
+
+/* .logo:hover {
+  transform: rotate(12deg) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+} */
+
+/* LINKS */
+
+.navLinks {
+  display: flex;
+  gap: 42px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navLinks a {
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.navLinks a:hover {
+  color: white;
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: white;
+  transition: 0.4s;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+/* BUTTON */
+
+.navButton {
+  flex-shrink: 0;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.45s;
+}
+
+.navButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
+}
+
+/* HERO */
+
+.hero {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 4px;
+  font-size: 13px;
+}
+
+.hero h1 {
+  margin-top: 22px;
+  font-size: 92px;
+  line-height: 0.95;
+  letter-spacing: -4px;
+  max-width: 1000px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 30px);
+    padding: 0 18px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .navButton {
+    padding: 12px 20px;
+  }
+}

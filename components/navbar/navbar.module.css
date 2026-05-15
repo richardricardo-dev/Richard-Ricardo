@@ -1,0 +1,100 @@
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px);
+  max-width: 1300px;
+  height: 72px;
+  padding: 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 10px 50px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* LOGO */
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.4s;
+}
+
+.logo:hover {
+  transform: rotate(12deg) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+/* LINKS */
+
+.navLinks {
+  display: flex;
+  gap: 42px;
+}
+
+.navLinks a {
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.navLinks a:hover {
+  color: white;
+}
+
+/* underline hover */
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: white;
+  transition: 0.4s;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+/* BUTTON */
+
+.navButton {
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.45s;
+}
+
+.navButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
+}
