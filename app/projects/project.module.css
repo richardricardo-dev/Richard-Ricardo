@@ -1,25 +1,33 @@
 .main {
   min-height: 100vh;
-  background: #000;
-  color: white;
-  overflow-x: hidden;
-  padding-top: 120px;
+  background-color: #070707;
+  color: #f5f5f5;
+  padding: 48px 24px 48px;
+  box-sizing: border-box;
 }
 
 /* NAVBAR */
 
+/* NAVBAR (Balik Normal Stay di Atas) */
 .navbar {
-  position: fixed;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 80px);
-  max-width: 1200px;
-  height: 72px;
-  padding: 0 30px;
+  /* position: fixed;  <--- INI DIHAPUS */
+  /* top: 24px;       <--- INI DIHAPUS */
+  /* left: 50%;       <--- INI DIHAPUS */
+  /* transform: translateX(-50%); <--- INI DIHAPUS */
+
+  position: relative; /* Diubah jadi relative biar dia stay di aliran dokumen normal */
+  width: 100%;
+  max-width: 1000px;
+  height: 80px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Menjaga logo di kiri, menu di tengah/kanan, tombol di kanan */
   z-index: 999;
+
+  /* Kasih margin bawah biar ada jarak romantis sebelum masuk ke Hero Section */
+  margin: 0 auto 80px auto;
+
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
@@ -103,47 +111,490 @@
   box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
 }
 
-/* HERO */
-
+/* HERO SECTION */
 .hero {
-  margin-top: 120px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 64px auto;
+}
+
+.heroSub {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #525252;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+}
+
+.heroDesc {
+  color: #a3a3a3;
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* FILTER TABS */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  background-color: #121212;
+  color: #a3a3a3;
+  border: 1px solid #1f1f1f;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  color: #ffffff;
+  border-color: #333333;
+}
+
+.filterActive {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+/* GRID PROJECTS (Ini yang bikin jadi kesamping kayak mockup) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto 96px auto;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Jadi 2 kolom pas tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Jadi 3 kolom pas desktop */
+  }
+}
+
+.card {
+  background-color: #121212;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #1f1f1f;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: #333333;
+}
+
+.imageWrapper {
+  aspect-ratio: 4 / 3;
+  background-color: #1a1a1a;
+  padding: 16px;
+  display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.hero p {
-  color: rgba(255, 255, 255, 0.35);
-  letter-spacing: 4px;
-  font-size: 13px;
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
-.hero h1 {
-  margin-top: 22px;
-  font-size: 92px;
-  line-height: 0.95;
-  letter-spacing: -4px;
-  max-width: 1000px;
+.card:hover .projectImage {
+  opacity: 1;
+  transform: scale(1.02);
 }
 
-/* RESPONSIVE */
+.cardInfo {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #1a1a1a;
+  background-color: #0e0e0e;
+}
 
-@media (max-width: 768px) {
-  .navbar {
-    width: calc(100% - 30px);
-    padding: 0 18px;
+.cardInfo h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.cardInfo p {
+  font-size: 12px;
+  color: #525252;
+  margin: 0;
+  font-weight: 300;
+}
+
+.arrowIcon {
+  color: #525252;
+  transition: all 0.2s ease;
+}
+
+.card:hover .arrowIcon {
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
+/* CTA BANNER */
+.ctaBanner {
+  max-width: 1200px;
+  margin: 0 auto 96px auto;
+  background-color: #121212;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.ctaLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctaIconBox {
+  background-color: #1a1a1a;
+  border: 1px solid #262626;
+  padding: 12px;
+  border-radius: 12px;
+  color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ctaLeft h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.ctaLeft p {
+  color: #525252;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.ctaButton {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #e5e5e5;
+}
+
+/* FOOTER */
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid #1f1f1f;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #525252;
+  letter-spacing: 0.05em;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+}
+
+.footerLinks a {
+  color: #525252;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+  color: #a3a3a3;
+}
+
+/* --- MODAL SYSTEM --- */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000; /* Harus di atas navbar fixed (999) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: #121212;
+  border: 1px solid #1f1f1f;
+  max-width: 650px;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a3a3a3;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.modalImageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #1a1a1a;
+  overflow: hidden;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.modalImageWrapper img {
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+}
+
+.modalBody {
+  padding: 32px;
+}
+
+.modalCategory {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #525252;
+  font-weight: 600;
+}
+
+.modalTitle {
+  font-size: 28px;
+  color: #ffffff;
+  margin: 8px 0 8px 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.modalDesc {
+  color: #a3a3a3;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+/* Tech Stack Badges */
+.techStack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.techBadge {
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  color: #a3a3a3;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.modalTitleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalLiveButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalLiveButton b {
+  color: #ffffff;
+  text-decoration: none;
+  /* padding: 12px 24px; */
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  width: max-content;
+  position: relative;
+}
+
+.modalLiveButton b::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Default awal garis sembunyi (lebar 0) */
+  height: 1px; /* Ketebalan garis */
+  background-color: #e5e5e5; /* Warna garis saat hover */
+  transition: width 0.3s ease; /* Transisi melebar yang mulus */
+}
+
+/* EFEK HOVER BARU */
+.modalLiveButton b:hover {
+  color: #e5e5e5; /* Teks berubah sedikit abu-abu terang sesuai request-mu */
+  transform: translateY(-2px); /* Tetap naik dikit biar dinamis */
+}
+
+/* Pas di-hover, garis bawah otomatis melebar penuh 100% */
+.modalLiveButton b:hover::after {
+  width: 100%;
+}
+
+.modalLiveButton svg {
+  transition: transform 0.2s ease;
+}
+
+.modalLiveButton:hover svg {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 640px) {
+  .modalLiveButton {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0;
   }
+  /* Matikan animasi garis melebar di HP karena full width */
+  .modalLiveButton:hover::after {
+    width: 0%;
+  }
+}
 
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Modal buat HP */
+@media (max-width: 640px) {
+  .modalBody {
+    padding: 24px;
+  }
+  .modalTitle {
+    font-size: 22px;
+  }
+}
+@media (max-width: 640px) {
+  .main {
+    padding: 24px 20px;
+  }
+  .navbar,
+  .ctaBanner,
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .navLinks {
-    display: none;
+    margin: 20px 0;
+    flex-direction: column;
+    gap: 16px;
   }
-
-  .hero h1 {
-    font-size: 52px;
-  }
-
-  .navButton {
-    padding: 12px 20px;
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
   }
 }
