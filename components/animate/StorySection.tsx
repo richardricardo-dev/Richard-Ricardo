@@ -8,7 +8,7 @@ import styles from "./story.module.css";
 import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "react-icons/si";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TbBrandFramerMotion } from "react-icons/tb";
-import Link from "next/link";
+import { TransitionLink } from "@/components/animate/TransitionLink";
 
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -42,7 +42,7 @@ export default function Story() {
         scrollTrigger: {
           trigger: ref.current,
           start: "top top",
-          end: "+=3500", // 🔥 shorter = no more “stuck” feeling
+          end: "+=4000", // Increased scroll space to avoid ending too quickly
           scrub: 1, // smoother
           pin: true,
         },
@@ -149,9 +149,10 @@ export default function Story() {
           },
           "-=.4",
         )
+        .addLabel("cta-section")
         // 👉 CONTACT
         .to(".cta", { opacity: 0, duration: 1 })
-        .fromTo(".contact", { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1 });
+        .fromTo(".contact", { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1, pointerEvents: "all" });
     }, ref);
 
     // const goContact = () => {
@@ -169,6 +170,18 @@ export default function Story() {
 
     return () => ctx.revert();
   }, []);
+
+  const goExplore = () => {
+    if (!triggerRef.current) return;
+
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power2.inOut",
+      scrollTo: {
+        y: triggerRef.current.labelToScroll("cta-section"),
+      },
+    });
+  };
 
   const goContact = () => {
     if (!triggerRef.current) return;
@@ -201,9 +214,7 @@ export default function Story() {
         <p className={styles.heroDescTop}>I build modern, fast and responsive digital experiences.</p>
 
         <div className={styles.heroButtons}>
-          <Link href="/projects">
-            <Button>Explore Work →</Button>
-          </Link>
+          <Button onClick={goExplore}>Explore Work →</Button>
 
           <Button className={styles.ghostBtn} onClick={goContact}>
             Contact
@@ -358,12 +369,14 @@ export default function Story() {
           <p className={`${styles.heroDesc} cta-desc`}>I design and build digital experiences that are fast, intuitive, and impactful.</p>
 
           <div className={styles.ctaButtons}>
-            <button className={`${styles.primaryBtn} cta-button`}>View Work →</button>
+            <TransitionLink href="/projects">
+              <button className={`${styles.primaryBtn} cta-button`}>View Work →</button>
+            </TransitionLink>
           </div>
         </div>
       </div>
       {/* CONTACT */}
-      <div className="contact absolute inset-0 opacity-0 flex items-center justify-center" id="contact">
+      <div className="contact absolute inset-0 opacity-0 flex items-center justify-center z-40 pointer-events-none" id="contact">
         <div className={styles.contactContainer}>
           <div className={styles.contactTop}>
             <span className={styles.dot}></span>
@@ -381,7 +394,9 @@ export default function Story() {
           </a>
 
           <div className={styles.contactButtons}>
-            <button className={styles.contactBtn}>Say Hello →</button>
+            <TransitionLink href="/contact">
+              <button className={styles.contactBtn}>Say Hello →</button>
+            </TransitionLink>
 
             <button className={styles.contactGhost}>Resume ↓</button>
           </div>

@@ -1,10 +1,10 @@
-import Projects from "./projects";
+import Contact from "./contact";
 import { Navbar } from "@/components";
 export default function Page() {
   return (
     <div>
       <Navbar></Navbar>
-      <Projects></Projects>
+      <Contact></Contact>
     </div>
   );
 }

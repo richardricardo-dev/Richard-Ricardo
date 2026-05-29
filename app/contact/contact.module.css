@@ -1,0 +1,229 @@
+/* ==========================================================================
+   1. MAIN WRAPPER & SECTION UTAMA
+   ========================================================================== */
+.main {
+  min-height: 100vh;
+  background-color: #070707;
+  color: #f5f5f5;
+  padding: 48px 24px 48px;
+  box-sizing: border-box;
+}
+
+.contactSection {
+  width: 100%;
+  background-color: #070707;
+  padding: 40px 0 96px 0;
+}
+
+/* ==========================================================================
+   3. CONTENT CONTAINER & HERO AREA
+   ========================================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.subTitle {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #525252;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.mainTitle {
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  max-width: 600px;
+  margin: 0 0 48px 0;
+  color: #ffffff;
+}
+
+.emailWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.emailLink {
+  font-size: 32px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.emailLink:hover {
+  color: #a3a3a3;
+}
+
+.copyButton {
+  background: #121212;
+  border: 1px solid #1f1f1f;
+  color: #a3a3a3;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  color: #ffffff;
+  border-color: #333333;
+  background: #161616;
+}
+
+/* ==========================================================================
+   4. BENTO GRID SYSTEM & SMOOTH TRANSITIONS
+   ========================================================================== */
+.bentoGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  border-top: 1px solid #141414;
+  padding-top: 64px;
+}
+
+.bentoCard {
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  box-sizing: border-box;
+
+  /* Kombinasi timing function cubic-bezier agar transisi smooth berkelas */
+  transition:
+    background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bentoCard:hover {
+  background-color: #121212;
+  border-color: #262626;
+  transform: translateY(-4px);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.iconBox {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.cardMeta h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.cardMeta p {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.urlText {
+  font-size: 11px;
+  color: #444444;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
+  transition: color 0.3s ease;
+}
+
+.bentoCard:hover .urlText {
+  color: #888888;
+}
+
+.arrowIcon {
+  font-size: 12px;
+  color: #444444;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.3s ease;
+}
+
+.bentoCard:hover .arrowIcon {
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   5. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .bentoGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .navbar {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contactSection {
+    padding: 40px 0 60px 0;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .mainTitle {
+    font-size: 32px;
+  }
+  .emailLink {
+    font-size: 20px;
+  }
+  .navLinks {
+    display: none; /* Menyembunyikan menu link bawaan di mobile smartphone */
+  }
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+  }
+  .bentoCard {
+    min-height: auto;
+    gap: 20px;
+  }
+}

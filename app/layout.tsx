@@ -1,6 +1,7 @@
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import PageTransition from "@/components/animate/PageTransition";
 
 const satoshi = localFont({
   src: [
@@ -30,7 +31,9 @@ interface Layout {
 export default function RootLayout({ children }: Layout) {
   return (
     <html lang="en">
-      <body className={satoshi.className}>{children}</body>
+      <body className={satoshi.className}>
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }

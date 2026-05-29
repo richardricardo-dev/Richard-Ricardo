@@ -34,9 +34,15 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #d6c8a3;
+  background: #4ade80;
 
-  box-shadow: 0 0 12px #d6c8a3;
+  box-shadow: 0 0 12px #4ade80;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 12px #4ade80; }
+  50% { opacity: 0.4; box-shadow: 0 0 2px #4ade80; }
 }
 
 .heroButtons {
@@ -405,9 +411,10 @@
 
   border-radius: 50%;
 
-  background: #d6c8a3;
+  background: #4ade80;
 
-  box-shadow: 0 0 10px #d6c8a3;
+  box-shadow: 0 0 10px #4ade80;
+  animation: blink 2s ease-in-out infinite;
 }
 
 /* ========================= */

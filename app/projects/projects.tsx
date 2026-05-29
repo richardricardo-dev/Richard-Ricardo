@@ -87,24 +87,6 @@ export default function Projects() {
 
   return (
     <div className={styles.main}>
-      {/* NAVBAR */}
-      <nav className={styles.navbar}>
-        <div className={styles.logo}>
-          <span>
-            <img src="/logo.png" alt="" />
-          </span>
-        </div>
-
-        <div className={styles.navLinks}>
-          <Link href="/">Home</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-
-        <button className={styles.navButton}>Resume</button>
-      </nav>
-
       {/* HERO SECTION */}
       <div className={styles.hero}>
         <p className={styles.heroSub}>SELECTED WORK</p>
