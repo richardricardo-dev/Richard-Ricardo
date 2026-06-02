@@ -546,7 +546,6 @@
 
 @media (max-width: 640px) {
   .modalLiveButton {
-    width: 100%;
     justify-content: center;
     padding: 8px 0;
   }
@@ -583,7 +582,10 @@
     padding: 24px;
   }
   .modalTitle {
-    font-size: 22px;
+    font-size: 17px;
+  }
+  .modalLiveButton b {
+    font-size: 13px;
   }
 }
 @media (max-width: 640px) {
