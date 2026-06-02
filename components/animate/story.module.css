@@ -41,8 +41,15 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; box-shadow: 0 0 12px #4ade80; }
-  50% { opacity: 0.4; box-shadow: 0 0 2px #4ade80; }
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 12px #4ade80;
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #4ade80;
+  }
 }
 
 .heroButtons {
@@ -796,7 +803,7 @@
 /* ========================= */
 @media (max-width: 768px) {
   .heroImg {
-    width: 280px;
+    width: 200px;
   }
   .photoGlow {
     width: 320px;
@@ -810,12 +817,18 @@
     margin-top: -40px; /* Pull it up a bit so it's not too far down */
   }
   .heroButtons {
-    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 30px; */
     width: 100%;
     gap: 10px;
+    margin-top: 15px;
   }
   .heroButtons button {
-    width: 100%;
+    width: 160px;
+    border-color: grey;
+    margin-top: 5px;
   }
   .heroStats {
     gap: 20px;
@@ -826,15 +839,15 @@
     font-size: 20px;
   }
   .imageAbout {
-    width: 280px;
-    margin-bottom: 20px;
+    width: 230px;
+    margin-bottom: 40px;
   }
   .about_container {
     margin-left: 0;
     text-align: center;
   }
   .aboutTitle {
-    font-size: 26px;
+    font-size: 22px;
     text-align: center;
   }
   .aboutContent {
@@ -842,28 +855,34 @@
   }
   .aboutStats {
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
     align-items: center;
   }
   .skillsContainer {
     padding: 0 15px;
   }
   .skillsTitle {
-    font-size: 32px;
+    font-size: 28px;
   }
   .skillsTech {
     gap: 12px;
     width: 100%;
     padding: 0 10px;
   }
+  .smallIcon {
+    font-size: 10px;
+    top: 19px;
+  }
   .techItem {
-    width: calc(50% - 6px); /* 2 columns */
-    height: 80px;
+    width: calc(33.33% - 8px); /* 3 columns */
+    height: 75px;
+    border-radius: 13px;
+    border-color: grey;
   }
   .techText {
-    font-size: 15px;
+    font-size: 13px;
+    margin-left: 0px;
   }
   .heroCtaTitle {
     font-size: 44px;
