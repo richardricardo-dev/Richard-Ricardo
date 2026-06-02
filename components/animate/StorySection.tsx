@@ -200,20 +200,18 @@ export default function Story() {
   return (
     <section ref={ref} className="min-h-screen w-full text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-40">
       {/* HERO */}
-      <div className="hero-text max-w-xl z-10 flex flex-col items-center md:items-start text-center md:text-left mt-20 md:mt-0">
+      <div className="hero-text max-w-xl z-10 flex flex-col items-center md:items-start text-center md:text-left mt-[50px] md:mt-0">
+        {" "}
         <div className={styles.heroBadge}>
           <span></span>
           Available for projects
         </div>
-
         <h1 className={styles.heroTitle}>
           Hello There!
           <br />
           I’m Richard
         </h1>
-
         <p className={styles.heroDescTop}>I build modern, fast and responsive digital experiences.</p>
-
         <div className={styles.heroButtons}>
           <Button onClick={goExplore}>Explore Work →</Button>
 
