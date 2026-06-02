@@ -9,6 +9,7 @@ import { SiNextdotjs, SiReact, SiTypescript, SiPostgresql, SiPrisma } from "reac
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { TransitionLink } from "@/components/animate/TransitionLink";
+import Link from "next/link";
 
 export default function Story() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -197,9 +198,9 @@ export default function Story() {
   };
 
   return (
-    <section ref={ref} className="min-h-screen w-full  text-white relative overflow-hidden flex items-center justify-between px-45">
+    <section ref={ref} className="min-h-screen w-full text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-40">
       {/* HERO */}
-      <div className="hero-text max-w-xl z-10">
+      <div className="hero-text max-w-xl z-10 flex flex-col items-center md:items-start text-center md:text-left mt-20 md:mt-0">
         <div className={styles.heroBadge}>
           <span></span>
           Available for projects
@@ -222,7 +223,7 @@ export default function Story() {
         </div>
       </div>
 
-      <div className="hero-img relative">
+      <div className="hero-img relative mt-10 md:mt-0">
         <div className={styles.photoGlow}></div>
 
         <img src="/saya2.png" className={styles.heroImg} />
@@ -237,7 +238,7 @@ export default function Story() {
       </div>
 
       {/* ABOUT */}
-      <div className="about absolute inset-0 flex items-center justify-between px-40 opacity-0 pointer-events-none">
+      <div className="about absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-40 opacity-0 pointer-events-none">
         <img src="/sayatapiai.png" className={styles.imageAbout} />
         <div className={styles.about_container}>
           <h2 className={styles.aboutTitle}>I’m a Developer who passionate building fast, modern and responsive web experiences.</h2>
@@ -320,34 +321,34 @@ export default function Story() {
         {/* floating preview cards */}
         <div className={styles.floatScene}>
           <div className={`${styles.previewCard} preview-card ${styles.leftTop}`}>
-            <img src="/vaultz.png" alt="" />
+            <img src="/rich-crypto.png" alt="" />
             <div className={styles.previewContent}>
-              <h4>HoliBill</h4>
-              <p>E-Commerce Topup</p>
+              <h4>SaaS</h4>
+              <p>Software as a Service</p>
             </div>
           </div>
 
           <div className={`${styles.previewCard} preview-card ${styles.rightTop}`}>
-            <img src="/kitchenmom.png" alt="" />
+            <img src="/landingpage.png" alt="" />
             <div className={styles.previewContent}>
-              <h4>DB Explorer</h4>
-              <p>Postgres Tool</p>
+              <h4>Landing Page</h4>
+              <p>A website built to showcase a specific product.</p>
             </div>
           </div>
 
           <div className={`${styles.previewCard} preview-card ${styles.leftBottom}`}>
-            <img src="/holibill.png" alt="" />
+            <img src="/coin-admin.png" alt="" />
             <div className={styles.previewContent}>
-              <h4>Task Master</h4>
-              <p>Management App</p>
+              <h4>Admin Web</h4>
+              <p>Management and Control Web App</p>
             </div>
           </div>
 
           <div className={`${styles.previewCard} preview-card ${styles.rightBottom}`}>
-            <img src="/vaultz.png" alt="" />
+            <img src="/coin.png" alt="" />
             <div className={styles.previewContent}>
-              <h4>Motion Portfolio</h4>
-              <p>Interactive Design</p>
+              <h4>Marketplace Web</h4>
+              <p>Marketplace</p>
             </div>
           </div>
         </div>
@@ -398,16 +399,29 @@ export default function Story() {
               <button className={styles.contactBtn}>Say Hello →</button>
             </TransitionLink>
 
-            <button className={styles.contactGhost}>Resume ↓</button>
+            <a href="/Richard Ricardo-CV.pdf" download="Richard_Ricardo_CV.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <button className={styles.contactGhost}>Resume ↓</button>
+            </a>
           </div>
 
           <div className={styles.line}></div>
 
           <div className={styles.contactSocial}>
-            <span>GitHub</span>
-            <span>LinkedIn</span>
-            <span>Instagram</span>
-            <span>Email</span>
+            <Link href="https://github.com/richardricardo-dev" target="_blank" rel="noopener noreferrer">
+              <span>GitHub</span>
+            </Link>
+
+            <Link href="https://www.linkedin.com/in/richard-ricardo-39368731b/" target="_blank" rel="noopener noreferrer">
+              <span>LinkedIn</span>
+            </Link>
+
+            {/* <Link href="https://www.instagram.com/your_instagram_handle" target="_blank" rel="noopener noreferrer">
+              <span>Instagram</span>
+            </Link> */}
+
+            <Link href="mailto:richardricardoyohanes@gmail.com">
+              <span>Email</span>
+            </Link>
           </div>
         </div>
       </div>

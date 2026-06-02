@@ -5,7 +5,7 @@ import styles from "./contact.module.css";
 import Link from "next/link";
 
 export default function Contact() {
-  const emailAddress = "richardricardo.dev@gmail.com";
+  const emailAddress = "richardricardoyohanes@gmail.com";
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -22,7 +22,7 @@ export default function Contact() {
     {
       name: "GitHub",
       desc: "Check out my code and projects",
-      url: "https://github.com/richardricardo",
+      url: "https://github.com/richardricardo-dev",
       displayUrl: "github.com/richardricardo",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -33,7 +33,7 @@ export default function Contact() {
     {
       name: "LinkedIn",
       desc: "Let's connect professionally",
-      url: "https://linkedin.com/in/richardricardo",
+      url: "https://www.linkedin.com/in/richard-ricardo-39368731b/",
       displayUrl: "linkedin.com/in/richardricardo",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0077B5" viewBox="0 0 16 16">
@@ -43,8 +43,8 @@ export default function Contact() {
     },
     {
       name: "Instagram",
-      desc: "See my work and behind the scenes",
-      url: "https://instagram.com/richardricardo.dev",
+      desc: "Let's contact me personally",
+      url: "https://www.instagram.com/richardricardoyohanes/",
       displayUrl: "instagram.com/richardricardo.dev",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">

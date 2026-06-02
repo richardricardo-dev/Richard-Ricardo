@@ -89,9 +89,8 @@
    4. BENTO GRID SYSTEM & SMOOTH TRANSITIONS
    ========================================================================== */
 .bentoGrid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   width: 100%;
   border-top: 1px solid #141414;
@@ -203,8 +202,11 @@
 }
 
 @media (max-width: 640px) {
+  .main {
+    padding: 24px 16px;
+  }
   .contactSection {
-    padding: 40px 0 60px 0;
+    padding: 20px 0 60px 0;
   }
   .container {
     padding: 0 20px;
@@ -212,18 +214,40 @@
   .mainTitle {
     font-size: 32px;
   }
+  .emailWrapper {
+    margin-bottom: 32px; /* Reduce gap */
+  }
   .emailLink {
-    font-size: 20px;
+    font-size: 21px; /* Smaller email text */
+    word-break: break-all;
+    padding: 0 10px;
   }
   .navLinks {
-    display: none; /* Menyembunyikan menu link bawaan di mobile smartphone */
+    display: none;
   }
   .bentoGrid {
     grid-template-columns: 1fr;
-    padding-top: 40px;
+    padding-top: 32px; /* Reduce gap */
   }
   .bentoCard {
     min-height: auto;
-    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .cardHeader {
+    align-items: center;
+  }
+  .cardMeta h3 {
+    font-size: 22px; /* Bigger card title */
+  }
+  .cardMeta p {
+    font-size: 16px; /* Bigger card desc */
+  }
+  .urlText {
+    font-size: 14px; /* Bigger link text */
+  }
+  .cardFooter {
+    justify-content: center;
+    margin-top: 0px;
   }
 }

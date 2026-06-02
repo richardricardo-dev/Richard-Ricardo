@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./project.module.css";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
   id: string;
   title: string;
-  category: "Web Apps" | "Mobile Apps" | "UI / UX" | "Other";
+  category: "Web Marketplaces" | "Landing Page" | "Web Admin" | "SaaS" | "Other";
   tags: string[];
   image: string;
   desc: string;
@@ -16,75 +18,79 @@ interface Project {
 }
 
 export default function Projects() {
+  const Router = useRouter();
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ["All", "Web Apps", "Mobile Apps", "UI / UX", "Other"];
+  const categories = ["All", "Web Marketplaces", "Landing Page", "Web Admin", "SaaS", "Other"];
 
   const projects: Project[] = [
     {
       id: "crypto",
       title: "Rich-Crypto",
-      category: "Web Apps",
+      category: "SaaS",
       tags: ["Web App", "Finance"],
       image: "/rich-crypto.png",
-      desc: "A comprehensive real-time financial dashboard tracking active metrics, transaction flows, and user retention analysis with optimized server-side actions.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
-      liveUrl: "https://fintrack.richardricardo.dev" /* Ganti pake link aslimu */,
+      desc: "A crypto tracking dashboard that fetches real-time data from the CoinGecko API. It features a sandbox Stripe payment integration for handling subscriptions, serving as a comprehensive SaaS dummy project.",
+      tech: ["Next.js", "TypeScript", "API", "Google Cloud", "Supabase"],
+      liveUrl: "https://rich-crypto.vercel.app/",
     },
     {
       id: "coin",
       title: "Coin-Market",
-      category: "Web Apps",
+      category: "Web Marketplaces",
       tags: ["E-Commerce", "Web"],
       image: "/coin.png",
-      desc: "A luxury minimalist e-commerce storefront designed with clean layout structures, fast page response times, and premium product display animations.",
-      tech: ["React", "TypeScript", "PostgreSQL", "CSS Modules"],
-      liveUrl: "https://aurora.richardricardo.dev",
+      desc: "A marketplace platform simulating buying and selling processes. It offers a seamless checkout flow with two sandbox payment methods (Bank Transfer and QRIS).",
+      tech: ["Next.js", "TypeScript", "Neon", "NextAuth", "Google Cloud", "API"],
+      liveUrl: "https://coin-market-black.vercel.app/",
     },
     {
       id: "coin-admin",
       title: "Coin-Market Admin",
-      category: "Web Apps",
-      tags: ["Mobile App", "Health"],
+      category: "Web Admin",
+      tags: ["Web Admin", "Finance"],
       image: "/coin-admin.png",
-      desc: "A dark-themed premium fitness tracking application crafted to monitor physical progress, training schedules, and strict dietary workflows.",
-      tech: ["React Native", "TypeScript", "Expo", "Redux Toolkit"],
-      liveUrl: "https://github.com/richardricardo/move-app" /* Bisa diarahin ke github klo mobile app */,
+      desc: "A dedicated admin dashboard to manage and monitor the Coin-Market platform, featuring a robust role-based access control (RBAC) system for different admin permissions.",
+      tech: ["Next.js", "TypeScript", "Neon", "API", "RBAC"],
+      liveUrl: "https://coin-market-admin.vercel.app/login",
     },
     {
       id: "vaultz",
       title: "Vault-Z",
-      category: "Web Apps",
-      tags: ["Web App", "Travel"],
+      category: "Other",
+      tags: ["Web App"],
       image: "/vaultz.png",
-      desc: "An immersive travel itinerary planning tool that helps remote workers and digital nomads structure global workflows smoothly.",
-      tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS"],
-      liveUrl: "https://wanderly.richardricardo.dev",
+      desc: "A Pinterest-style photo sharing application that allows users to discover images. It includes user authentication and full CRUD functionalities for managing posts.",
+      tech: ["Next.js", "TypeScript", "Neon", "CRUD"],
+      liveUrl: "https://vault-z-uovu.vercel.app/",
     },
     {
       id: "kitchenmom",
       title: "Kitchen Moms",
-      category: "Web Apps",
-      tags: ["Web App", "Productivity"],
+      category: "Landing Page",
+      tags: ["Web App"],
       image: "/kitchenmom.png",
-      desc: "A minimal workspace organizer utilizing custom state management paradigms to group project sprints and development tasks elegantly.",
-      tech: ["React", "TypeScript", "Zustand", "CSS Modules"],
-      liveUrl: "https://taskly.richardricardo.dev",
+      desc: "A beautifully crafted landing page designed to promote a local business, built entirely with clean and responsive HTML and CSS.",
+      tech: ["HTML", "CSS"],
+      liveUrl: "https://kitchenmoms.vercel.app/",
     },
     {
-      id: "studio-k",
-      title: "Studio K",
-      category: "UI / UX",
-      tags: ["Web", "Branding"],
-      image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=600&auto=format&fit=crop",
-      desc: "Design system exploration and digital agency portfolio structure focusing heavily on micro-interactions, clean glassmorphism layers, and pristine layout scales.",
-      tech: ["Figma", "Canva Pro", "Design System"],
+      id: "yhnz-db",
+      title: "Yhnz-DB",
+      category: "Landing Page",
+      tags: ["Web App", "Branding"],
+      image: "/landingpage.png",
+      desc: "A promotional landing page for an online action figure store, highly optimized for SEO and featuring an intuitive UI/UX to effectively market products.",
+      tech: ["Next.js", "SEO", "React"],
+      liveUrl : "https://yhnz-db.vercel.app/"
     },
   ];
 
   const filteredProjects = activeCategory === "All" ? projects : projects.filter((p) => p.category === activeCategory);
-
+  const buttonClick= () => {
+    Router.push("/contact");
+  }
   return (
     <div className={styles.main}>
       {/* HERO SECTION */}
@@ -108,26 +114,38 @@ export default function Projects() {
       </div>
 
       {/* GRID PROJECTS */}
-      <div className={styles.grid}>
-        {filteredProjects.map((project) => (
-          <div key={project.id} className={styles.card} onClick={() => setSelectedProject(project)} style={{ cursor: "pointer" }}>
-            <div className={styles.imageWrapper}>
-              <img src={project.image} alt={project.title} className={styles.projectImage} />
-            </div>
-            <div className={styles.cardInfo}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.tags.join(" • ")}</p>
+      <motion.div layout className={styles.grid}>
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              key={project.id}
+              className={styles.card}
+              onClick={() => setSelectedProject(project)}
+              style={{ cursor: "pointer" }}
+            >
+              <div className={styles.imageWrapper}>
+                <img src={project.image} alt={project.title} className={styles.projectImage} />
               </div>
-              <div className={styles.arrowIcon}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />
-                </svg>
+              <div className={styles.cardInfo}>
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.tags.join(" • ")}</p>
+                </div>
+                <div className={styles.arrowIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />
+                  </svg>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* MODAL PENJELASAN PROJECT CONTAINER */}
       {selectedProject && (
@@ -183,7 +201,7 @@ export default function Projects() {
             <p>Let`s create something great together.</p>
           </div>
         </div>
-        <button className={styles.ctaButton}>
+        <button className={styles.ctaButton} onClick={buttonClick}>
           Let`s Talk
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />

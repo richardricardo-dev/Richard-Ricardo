@@ -790,3 +790,120 @@
   color: white;
   transform: translateY(-4px);
 }
+
+/* ========================= */
+/* MOBILE RESPONSIVE         */
+/* ========================= */
+@media (max-width: 768px) {
+  .heroImg {
+    width: 280px;
+  }
+  .photoGlow {
+    width: 320px;
+    height: 320px;
+  }
+  .heroTitle {
+    font-size: 42px;
+  }
+  .heroBadge {
+    margin-bottom: 20px;
+    margin-top: -40px; /* Pull it up a bit so it's not too far down */
+  }
+  .heroButtons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .heroButtons button {
+    width: 100%;
+  }
+  .heroStats {
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .heroStats h4 {
+    font-size: 20px;
+  }
+  .imageAbout {
+    width: 280px;
+    margin-bottom: 20px;
+  }
+  .about_container {
+    margin-left: 0;
+    text-align: center;
+  }
+  .aboutTitle {
+    font-size: 26px;
+    text-align: center;
+  }
+  .aboutContent {
+    font-size: 16px;
+  }
+  .aboutStats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+  }
+  .skillsContainer {
+    padding: 0 15px;
+  }
+  .skillsTitle {
+    font-size: 32px;
+  }
+  .skillsTech {
+    gap: 12px;
+    width: 100%;
+    padding: 0 10px;
+  }
+  .techItem {
+    width: calc(50% - 6px); /* 2 columns */
+    height: 80px;
+  }
+  .techText {
+    font-size: 15px;
+  }
+  .heroCtaTitle {
+    font-size: 44px;
+    margin-bottom: 10px;
+  }
+  .heroDesc {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+  .contactTitle {
+    font-size: 42px;
+  }
+  .contactDesc {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+  .contactMail {
+    font-size: 14px;
+    padding: 12px 18px;
+    word-break: break-all;
+  }
+  .contactButtons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+    gap: 10px;
+  }
+  .contactButtons button {
+    width: 100%;
+  }
+  .line {
+    width: 90%;
+    margin-top: 30px;
+  }
+  .contactSocial {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .floatScene {
+    display: none; /* Hide floating cards on mobile to avoid overlap */
+  }
+}

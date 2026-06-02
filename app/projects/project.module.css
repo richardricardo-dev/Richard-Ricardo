@@ -150,10 +150,17 @@
   justify-content: center;
   gap: 12px;
   margin-bottom: 48px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.filterContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .filterButton {
+  flex-shrink: 0;
   background-color: #121212;
   color: #a3a3a3;
   border: 1px solid #1f1f1f;
@@ -179,8 +186,8 @@
 /* GRID PROJECTS (Ini yang bikin jadi kesamping kayak mockup) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
   max-width: 1200px;
   margin: 0 auto 96px auto;
 }
@@ -188,6 +195,7 @@
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)); /* Jadi 2 kolom pas tablet */
+    gap: 24px;
   }
 }
 
@@ -580,21 +588,51 @@
 }
 @media (max-width: 640px) {
   .main {
-    padding: 24px 20px;
+    padding: 24px 16px;
   }
-  .navbar,
-  .ctaBanner,
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .navbar {
+    padding: 0 20px;
+    height: 65px;
+    margin-bottom: 40px;
   }
   .navLinks {
-    margin: 20px 0;
+    display: none; /* Sembunyikan links di mobile biar rapi */
+  }
+  .heroTitle {
+    font-size: 38px;
+    margin-bottom: 16px;
+  }
+  .heroDesc {
+    font-size: 15px;
+    padding: 0 16px;
+  }
+  .filterContainer {
+    gap: 8px;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+  .filterButton {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  .ctaBanner {
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    text-align: center;
+    padding: 32px 20px;
+  }
+  .ctaLeft {
+    flex-direction: column;
+    text-align: center;
   }
   .ctaButton {
     width: 100%;
     justify-content: center;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
   }
 }
