@@ -221,7 +221,7 @@ export default function Story() {
         </div>
       </div>
 
-      <div className="hero-img relative mt-10 md:mt-0 -translate-y-20 md:translate-y-0">
+      <div className="hero-img relative mt-10 md:mt-0 -translate-y-10 md:translate-y-0">
         <div className={styles.photoGlow}></div>
 
         <img src="/saya2.png" className={styles.heroImg} />
