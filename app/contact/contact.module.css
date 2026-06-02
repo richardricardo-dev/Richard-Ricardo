@@ -218,7 +218,7 @@
     margin-bottom: 32px; /* Reduce gap */
   }
   .emailLink {
-    font-size: 21px; /* Smaller email text */
+    font-size: 19px; /* Smaller email text */
     word-break: break-all;
     padding: 0 10px;
   }
